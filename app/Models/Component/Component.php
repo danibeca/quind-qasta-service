@@ -31,10 +31,10 @@ class Component extends Model
 
     public function getAttributeIssues()
     {
-        /*return $this->attributeIssueSeries()
+        return $this->attributeIssueSeries()
             ->whereCreatedAt(
                 $this->attributeIssueSeries()->max('created_at')
-            )->get();*/
+            )->get();
     }
 
 

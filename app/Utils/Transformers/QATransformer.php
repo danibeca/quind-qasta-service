@@ -15,11 +15,13 @@ class QATransformer
         foreach ($qas as $qa)
         {
             $values = $data->where('attribute_id', $qa);
+            $record = 0;
             foreach ($values as $value)
             {
-                $resultData[$qa]['impact'] = $value->impact;
-                $resultData[$qa]['effort'] = intval($value->effort);
-                $resultData[$qa]['quantity'] = $value->quantity;
+                $resultData[$qa][$record]['impact'] = $value->impact;
+                $resultData[$qa][$record]['effort'] = intval($value->effort);
+                $resultData[$qa][$record]['quantity'] = $value->quantity;
+                $record++;
             }
 
         }

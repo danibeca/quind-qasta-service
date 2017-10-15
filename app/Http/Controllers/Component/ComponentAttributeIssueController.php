@@ -6,6 +6,7 @@ use App\Utils\Transformers\IndicatorTransformer;
 use App\Utils\Transformers\IndicatorSerieTransformer;
 use App\Http\Controllers\ApiController;
 use App\Models\Component\Component;
+use App\Utils\Transformers\QATransformer;
 use Illuminate\Support\Facades\Input;
 
 class ComponentAttributeIssueController extends ApiController
@@ -14,6 +15,6 @@ class ComponentAttributeIssueController extends ApiController
     {
         $component = Component::find($componentId);
 
-        //return $this->respondData($component->getAttributeIssues());
+        return $this->respondData((new QATransformer())->transform($component->getAttributeIssues()));
     }
 }
