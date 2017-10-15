@@ -8,6 +8,13 @@ class Component extends Model
 {
     protected $fillable = ['id', 'tag_id'];
 
+
+    public function attributeIssueSeries()
+    {
+        return $this->hasMany('App\Models\Component\ComponentAttributeIssueSerie');
+
+    }
+
     public function indicatorSerie($indicatorId)
     {
         return $this->hasMany('App\Models\Component\ComponentIndicatorSerie')
@@ -21,5 +28,15 @@ class Component extends Model
                 $this->indicatorSerie($indicatorId)->max('created_at')
             )->get()->first();
     }
+
+    public function getAttributeIssues()
+    {
+        /*return $this->attributeIssueSeries()
+            ->whereCreatedAt(
+                $this->attributeIssueSeries()->max('created_at')
+            )->get();*/
+    }
+
+
 
 }
