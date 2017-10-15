@@ -1,16 +1,17 @@
 <?php
 
-namespace Agilin\Utils\Transformers;
+namespace App\Utils\Transformers;
 
-class IndicatorTransformer extends Transformer {
+use Carbon\Carbon;
+
+class IndicatorTransformer extends Transformer
+{
 
     public function transform($indicator)
     {
         return [
-            'id' => $indicator['id'],
-            'name' => $indicator['name'],
-            'code' => $indicator['code'],
-            'value' => round($indicator['value'],3)
+            'date'  => Carbon::parse($indicator['created_at'])->format('d-m-Y'),
+            'value' => round($indicator['value'], 2)
         ];
     }
 }

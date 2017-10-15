@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Account;
+namespace App\Models\Component;
 
 use App\Utils\Helpers\NodeTraitExt;
 use Illuminate\Database\Eloquent\Model;
@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class ComponentTree extends Model
 {
     use NodeTraitExt;
-
-    protected $fillable = ['name', 'tag_id'];
 
     public function root()
     {

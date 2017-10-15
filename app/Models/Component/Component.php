@@ -1,18 +1,25 @@
 <?php
 
-namespace App\Models\Account;
+namespace App\Models\Component;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Component extends Model
 {
+    protected $fillable = ['id', 'tag_id'];
 
-
-    protected $fillable = ['name', 'tag_id'];
-
-
-    public function qualitySystems()
+    public function indicatorSerie($indicatorId)
     {
-        return $this->belongsToMany('App\Models\QualitySystem\QualitySystem')->withPivot(['url', 'type']);
+        return $this->hasMany('App\Models\Component\ComponentIndicatorSerie')
+            ->where('indicator_id', $indicatorId);
     }
+
+    public function getIndicator($indicatorId)
+    {
+        return $this->indicatorSerie($indicatorId)
+            ->whereCreatedAt(
+                $this->indicatorSerie($indicatorId)->max('created_at')
+            )->get()->first();
+    }
+
 }

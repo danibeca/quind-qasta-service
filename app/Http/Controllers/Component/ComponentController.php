@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\ApiController;
-use App\Models\Account\Component;
-use App\Models\Account\ComponentTree;
+use App\Models\Component\Component;
+use App\Models\Component\ComponentTree;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
