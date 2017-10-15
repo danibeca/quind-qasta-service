@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateComponentAttributeHistoriesTable extends Migration
+class CreateComponentAttributeSeriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateComponentAttributeHistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('component_attribute_histories', function (Blueprint $table) {
+        Schema::create('component_attribute_series', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('component_id');
             $table->integer('attribute_id')->unsigned();
-            $table->integer('impact_id')->unsigned();
+            $table->integer('impact')->unsigned();
             $table->integer('effort')->unsigned();
             $table->integer('quantity')->unsigned();
             $table->timestamps();
@@ -34,6 +34,6 @@ class CreateComponentAttributeHistoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('component_attribute_histories');
+        Schema::dropIfExists('component_attribute_series');
     }
 }
