@@ -17,6 +17,24 @@ class ComponentIndicatorController extends ApiController
             return $this->respondData($this->series($componentId));
         }
 
+        if (Input::has('ids'))
+        {
+            $result = collect();
+            $indicatorIdArray = array_map('intval', explode(',', Input::get('ids')));
+
+            foreach ($indicatorIdArray as $indicatorId)
+            {
+
+                $result  =$result->union([$indicatorId => Component::find($componentId)->getIndicator($indicatorId)]);
+
+
+            }
+
+            return $this->respondData((new IndicatorTransformer())->transformCollection($result->toArray(), true));
+
+        }
+
+
         return $this->respondData([]);
     }
 
