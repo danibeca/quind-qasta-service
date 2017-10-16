@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Account;
+namespace App\Http\Controllers\Component;
 
 use App\Http\Controllers\ApiController;
 use App\Models\Component\Component;
@@ -20,6 +20,7 @@ class ComponentController extends ApiController
         if (Input::has('parent_id'))
         {
             $ids = ComponentTree::find(Input::get('parent_id'))->getDescendants()->pluck('component_id');
+
             return $this->respondData(Component::whereIn('id', $ids)->get());
         }
 
@@ -40,7 +41,7 @@ class ComponentController extends ApiController
         {
             $newComponentTree = new ComponentTree();
             $newComponentTree->component_id = $newComponent->id;
-            $newComponentTree->appendToNode(ComponentTree::where('component_id',$request->parent_id)->first())->save();
+            $newComponentTree->appendToNode(ComponentTree::where('component_id', $request->parent_id)->first())->save();
 
         } else
         {
@@ -63,8 +64,33 @@ class ComponentController extends ApiController
      */
     public function show($id)
     {
+        if (Input::has('details'))
+        {
+
+            $component = Component::find($id);
+
+
+            return $this->respondData([
+                'systems'      => $component->getInformation()->systems,
+                'applications' => $component->getInformation()->applications,
+                'debt'         => $this->secondsToTime($component->getInformation()->debt)
+            ]);
+
+
+        }
+
         return $this->respondData(Component::find($id));
     }
+
+
+    function secondsToTime($seconds)
+    {
+        $dtF = new \DateTime('@0');
+        $dtT = new \DateTime("@$seconds");
+
+        return $dtF->diff($dtT)->format('%a días, %h horas, %i minutos');
+    }
+
 
     /**
      * Update the specified resource in storage.

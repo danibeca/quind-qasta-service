@@ -25,7 +25,7 @@ class ComponentIndicatorController extends ApiController
             foreach ($indicatorIdArray as $indicatorId)
             {
 
-                $result  =$result->union([$indicatorId => Component::find($componentId)->getIndicator($indicatorId)]);
+                $result = $result->union([$indicatorId => Component::find($componentId)->getIndicator($indicatorId)]);
 
 
             }
@@ -67,6 +67,6 @@ class ComponentIndicatorController extends ApiController
             }
         }
 
-        return $this->respondData((new IndicatorSerieTransformer())->transformCollection($result, true));
+        return (new IndicatorSerieTransformer())->transformCollection($result, true);
     }
 }
