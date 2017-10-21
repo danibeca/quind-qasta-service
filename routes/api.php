@@ -26,6 +26,7 @@ $router->group([
         $router->get('/{id:[\d]+}/indicators/{id2:[\d]+}', ['uses' => 'ComponentIndicatorController@show']);
 
         $router->get('/{id:[\d]+}/attributeissues', ['uses' => 'ComponentAttributeIssueController@index']);
+        $router->get('/{id:[\d]+}/attributeissues2', ['uses' => 'ComponentAttributeIssueController@index2']);
 
 
     });
