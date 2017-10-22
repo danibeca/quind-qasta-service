@@ -19,6 +19,7 @@ $router->group([
         'namespace' => 'Component'], function () use ($router) {
 
 
+        $router->post('/', ['uses' => 'ComponentController@store']);
         $router->get('/{id:[\d]+}', ['uses' => 'ComponentController@show']);
 
 

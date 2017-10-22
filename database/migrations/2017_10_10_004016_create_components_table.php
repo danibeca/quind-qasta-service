@@ -15,9 +15,8 @@ class CreateComponentsTable extends Migration
     {
         Schema::create('components', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('tag_id')->unsigned();
+            $table->integer('type_id')->unsigned();
             $table->timestamps();
-            $table->foreign('tag_id')->references('id')->on('hierarchical_tags');
         });
     }
 

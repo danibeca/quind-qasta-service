@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Component extends Model
 {
-    protected $fillable = ['id', 'tag_id'];
+    protected $fillable = ['id', 'type_id'];
 
 
     public function informationSeries()

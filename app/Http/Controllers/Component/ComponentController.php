@@ -37,7 +37,7 @@ class ComponentController extends ApiController
     {
         $newComponent = new Component ($request->except('parent_id'));
         $newComponent->save();
-        if ($request->has('parent_id') && $request->tag_id !== 1)
+        if ($request->has('parent_id') && $request->type_id !== 1)
         {
             $newComponentTree = new ComponentTree();
             $newComponentTree->component_id = $newComponent->id;
@@ -52,7 +52,7 @@ class ComponentController extends ApiController
 
         ComponentTree::fixTree();
 
-        return $this->respondResourceCreated($newComponent);
+        return $this->respondResourceCreated();
 
     }
 
