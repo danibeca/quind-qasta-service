@@ -29,6 +29,11 @@ $router->group([
         $router->get('/{id:[\d]+}/attributeissues', ['uses' => 'ComponentAttributeIssueController@index']);
         $router->get('/{id:[\d]+}/attributeissues2', ['uses' => 'ComponentAttributeIssueController@index2']);
 
+        $router->post('/{id:[\d]+}/indicator-values', ['uses' => 'ComponentIndicatorValueController@store']);
+        $router->post('/{id:[\d]+}/quality-attribute-values', ['uses' => 'ComponentQualityAttributeValueController@store']);
+        $router->post('/{id:[\d]+}/information-values', ['uses' => 'ComponentInformationValueController@store']);
+
+
 
     });
 });

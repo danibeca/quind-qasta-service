@@ -73,7 +73,7 @@ class ComponentController extends ApiController
             return $this->respondData([
                 'systems'      => $component->getInformation()->systems,
                 'applications' => $component->getInformation()->applications,
-                'debt'         => $this->secondsToTime($component->getInformation()->debt)
+                'debt'         => $this->secondsToTime($component->getInformation()->debt*60)
             ]);
 
 

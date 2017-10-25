@@ -26,7 +26,7 @@ class QATransformer2
             {
                 $count++;
                 $attribute['values'][$count]['x'] = intval($value->effort);
-                $attribute['values'][$count]['y'] = 6-$value->impact;
+                $attribute['values'][$count]['y'] = $value->impact;
                 $attribute['values'][$count]['value'] = $value->quantity;
             }
 
