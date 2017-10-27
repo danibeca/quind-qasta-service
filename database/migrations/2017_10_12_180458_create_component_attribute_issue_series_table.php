@@ -23,7 +23,7 @@ class CreateComponentAttributeIssueSeriesTable extends Migration
             $table->timestamps();
 
             //$table->foreign('component_id')->references('id')->on('components')->onDelete('cascade');
-
+            $table->index('component_id');
         });
     }
 

@@ -17,6 +17,8 @@ class CreateComponentsTable extends Migration
             $table->increments('id');
             $table->integer('type_id')->unsigned();
             $table->timestamps();
+
+            $table->unique('id');
         });
     }
 

@@ -20,6 +20,9 @@ class CreateComponentIndicatorSeriesTable extends Migration
             $table->double('value');
             $table->timestamps();
 
+            $table->index('component_id');
+            $table->index(['component_id','indicator_id']);
+
             //$table->foreign('component_id')->references('id')->on('components')->onDelete('cascade');
         });
     }

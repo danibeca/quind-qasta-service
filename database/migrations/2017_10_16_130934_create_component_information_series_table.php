@@ -20,6 +20,9 @@ class CreateComponentInformationSeriesTable extends Migration
             $table->integer('applications');
             $table->integer('debt');
             $table->timestamps();
+
+            $table->index('component_id');
+
         });
     }
 
