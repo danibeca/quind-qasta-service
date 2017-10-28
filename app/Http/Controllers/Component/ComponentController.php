@@ -73,7 +73,7 @@ class ComponentController extends ApiController
             return $this->respondData([
                 'systems'      => $component->getInformation()->systems,
                 'applications' => $component->getInformation()->applications,
-                'debt'         => $this->secondsToTime($component->getInformation()->debt*60)
+                'debt'         => $this->secondsToTime($component->getInformation()->debt * 60)
             ]);
 
 
@@ -105,9 +105,6 @@ class ComponentController extends ApiController
         /** @var ComponentTree $componentTree */
         $componentTree = ComponentTree::where('component_id', $component->id)->get()->first();
         if (! $componentTree->isRoot())
-        {
-            $component->update($request->only('name'));
-        } else
         {
             $component->update($request->all());
         }
