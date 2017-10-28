@@ -69,11 +69,20 @@ class ComponentController extends ApiController
 
             $component = Component::find($id);
 
+            $info = $component->getInformation();
+            if ($info)
+            {
+                return $this->respondData([
+                    'systems'      => $info->systems,
+                    'applications' => $component->getInformation()->applications,
+                    'debt'         => $this->secondsToTime($component->getInformation()->debt * 60)
+                ]);
+            }
 
             return $this->respondData([
-                'systems'      => $component->getInformation()->systems,
-                'applications' => $component->getInformation()->applications,
-                'debt'         => $this->secondsToTime($component->getInformation()->debt * 60)
+                'systems'      => 0,
+                'applications' => 0,
+                'debt'         => 0
             ]);
 
 
@@ -107,7 +116,8 @@ class ComponentController extends ApiController
         if (! $componentTree->isRoot())
         {
             $component->update($request->all());
-            if($request->parent_id){
+            if ($request->parent_id)
+            {
                 $componentTree->parent_id = $request->parent_id;
                 $componentTree->save();
                 ComponentTree::fixTree();
