@@ -21,6 +21,7 @@ $router->group([
 
         $router->post('/', ['uses' => 'ComponentController@store']);
         $router->get('/{id:[\d]+}', ['uses' => 'ComponentController@show']);
+        $router->put('/{id:[\d]+}', ['uses' => 'ComponentController@show']);
 
 
         $router->get('/{id:[\d]+}/indicators', ['uses' => 'ComponentIndicatorController@index']);
