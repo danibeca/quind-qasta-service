@@ -21,7 +21,7 @@ class CreateComponentInformationSeriesTable extends Migration
             $table->integer('debt');
             $table->timestamps();
 
-            $table->index('component_id');
+            $table->foreign('component_id', 'fk_information_component')->references('id')->on('components')->onDelete('cascade');
 
         });
     }

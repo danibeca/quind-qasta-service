@@ -16,14 +16,15 @@ class CreateComponentAttributeIssueSeriesTable extends Migration
         Schema::create('component_attribute_issue_series', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('attribute_id')->unsigned();
-            $table->integer('impact')->unsigned();
-            $table->integer('effort')->unsigned();
-            $table->integer('quantity')->unsigned();
-            $table->integer('component_id');
+            $table->integer('impact');
+            $table->integer('effort');
+            $table->integer('quantity');
+            $table->integer('component_id')->unsigned();;
             $table->timestamps();
 
-            //$table->foreign('component_id')->references('id')->on('components')->onDelete('cascade');
-            $table->index('component_id');
+            $table->index(['component_id','attribute_id']);
+            $table->foreign('component_id', 'fk_attribute_component')->references('id')->on('components')->onDelete('cascade');
+
         });
     }
 
