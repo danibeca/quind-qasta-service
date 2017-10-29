@@ -21,7 +21,8 @@ $router->group([
 
         $router->post('/', ['uses' => 'ComponentController@store']);
         $router->get('/{id:[\d]+}', ['uses' => 'ComponentController@show']);
-        $router->put('/{id:[\d]+}', ['uses' => 'ComponentController@show']);
+        $router->put('/{id:[\d]+}', ['uses' => 'ComponentController@update']);
+        $router->delete('/{id:[\d]+}', ['uses' => 'ComponentController@destroy']);
 
 
         $router->get('/{id:[\d]+}/indicators', ['uses' => 'ComponentIndicatorController@index']);
@@ -33,8 +34,6 @@ $router->group([
         $router->post('/{id:[\d]+}/indicator-values', ['uses' => 'ComponentIndicatorValueController@store']);
         $router->post('/{id:[\d]+}/quality-attribute-values', ['uses' => 'ComponentQualityAttributeValueController@store']);
         $router->post('/{id:[\d]+}/information-values', ['uses' => 'ComponentInformationValueController@store']);
-
-
 
     });
 });
