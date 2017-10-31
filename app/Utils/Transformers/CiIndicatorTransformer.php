@@ -10,8 +10,6 @@ class   CiIndicatorTransformer extends Transformer
 
     public function transform($indicator)
     {
-
-
         if ($indicator)
         {
             $ciIndicator = CiIndicator::find($indicator['id']);
@@ -23,9 +21,6 @@ class   CiIndicatorTransformer extends Transformer
                 'value' => round($value, 2),
                 'name'  => $ciIndicator->name
             ];
-        } else
-        {
-            return [];
         }
     }
 }
