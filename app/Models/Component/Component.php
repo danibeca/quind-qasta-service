@@ -60,7 +60,7 @@ class Component extends Model
         return $this->ciIndicatorSerie($indicatorId)
             ->whereCreatedAt(
                 $this->ciIndicatorSerie($indicatorId)->max('created_at')
-            )->with('ciIndicator')->get()->first();
+            )->get()->first();
     }
 
     public function getAttributeIssues()
