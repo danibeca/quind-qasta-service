@@ -9,7 +9,7 @@ class CiAutomationTransformer extends Transformer
     public function transform($automationData)
     {
         return [
-            'phase' => $automationData['processPhase']['name'],
+            'phase' => $automationData['process_phase']['name'],
             'value' => $automationData['value'],
 
         ];
