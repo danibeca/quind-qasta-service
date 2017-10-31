@@ -14,7 +14,7 @@ class ComponentCiIndicatorValueController extends ApiController
     public function store($componentId)
     {
 
-        ComponentCiIndicatorSerie::where('component_id', $componentId)->where('created_at', '>', Carbon::now()->format('Y-m-d'))->delete();
+        ComponentCiIndicatorSerie::where('ci_indicator_id',Input::get('ci_indicator_id'))->where('component_id', $componentId)->where('created_at', '>', Carbon::now()->format('Y-m-d'))->delete();
         $value = new ComponentCiIndicatorSerie(Input::all());
         $value->component_id = $componentId;
         $value->save();
