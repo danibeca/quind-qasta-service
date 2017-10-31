@@ -12,7 +12,7 @@ class   CiIndicatorTransformer extends Transformer
     {
         if ($indicator)
         {
-            $ciIndicator = CiIndicator::find($indicator['id']);
+            $ciIndicator = CiIndicator::find($indicator['ci_indicator_id']);
             $value = isset($indicator['value']) ? $indicator['value'] : 0;
 
             return [
