@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Component;
 
+use App\Models\ContinuousIntegration\CiIndicator;
 use App\Utils\Transformers\CiIndicatorSerieTransformer;
 use App\Utils\Transformers\CiIndicatorTransformer;
 use App\Http\Controllers\ApiController;
