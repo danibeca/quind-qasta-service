@@ -32,7 +32,7 @@ class ComponentCiIndicatorController extends ApiController
 
             }
 
-           return $this->respondStandard((new CiIndicatorTransformer())->transformCollection($result->toArray()));
+           return $this->respondData(array_values((new CiIndicatorTransformer())->transformCollection($result->toArray())));
 //
         }
 
