@@ -14,7 +14,7 @@ class ComponentQualityAttributeValueController extends ApiController
     public function store($componentId)
     {
 
-        ComponentAttributeIssueSerie::where('component_id', $componentId)->where('created_at','>',Carbon::now()->format('Y-m-d'))->delete();
+        ComponentAttributeIssueSerie::where('attribute_id', (Input::get('attribute_id')))->where('component_id', $componentId)->where('created_at','>',Carbon::now()->format('Y-m-d'))->delete();
         $value = new ComponentAttributeIssueSerie(Input::all());
         $value->component_id = $componentId;
         $value->save();
