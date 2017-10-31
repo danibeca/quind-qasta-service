@@ -27,11 +27,25 @@ class Component extends Model
             ->where('indicator_id', $indicatorId);
     }
 
+    public function ciIndicatorSerie($indicatorId)
+    {
+        return $this->hasMany('App\Models\Component\ComponentCiIndicatorSerie')
+            ->where('ci_indicator_id', $indicatorId);
+    }
+
     public function getIndicator($indicatorId)
     {
         return $this->indicatorSerie($indicatorId)
             ->whereCreatedAt(
                 $this->indicatorSerie($indicatorId)->max('created_at')
+            )->get()->first();
+    }
+
+    public function getCiIndicator($indicatorId)
+    {
+        return $this->ciIndicatorSerie($indicatorId)
+            ->whereCreatedAt(
+                $this->ciIndicatorSerie($indicatorId)->max('created_at')
             )->get()->first();
     }
 
