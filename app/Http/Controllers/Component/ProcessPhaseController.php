@@ -16,7 +16,12 @@ class ProcessPhaseController extends ApiController
 
     public function store(Request $request, $id)
     {
-        return $this->respondResourceCreated();
+        $phase = new ProcessPhase();
+        $phase->component_owner_id = $id;
+        $phase->name = $request->name;
+        $phase->save();
+
+        return $this->respondResourceCreated($phase);
     }
 
 }
