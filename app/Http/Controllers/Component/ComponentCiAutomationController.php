@@ -15,7 +15,7 @@ class ComponentCiAutomationController extends ApiController
     {
         return $this->respondData(
             (new CiAutomationTransformer())->transformCollection(
-                Component::find($componentId)->getCiAutomation()->get()->toArray()
+                Component::find($componentId)->getCiAutomation()->toArray()
             )
         );
     }
