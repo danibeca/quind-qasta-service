@@ -38,7 +38,7 @@ $router->group([
 
         $router->get('/{id:[\d]+}/ci-indicators', ['uses' => 'ComponentCiIndicatorController@index']);
         $router->get('/{id:[\d]+}/ci-indicators/{id2:[\d]+}', ['uses' => 'ComponentCiIndicatorController@show']);
-        $router->get('/{id:[\d]+}/ci-automation-phases/{id2:[\d]+}', ['uses' => 'ComponentCiAutomationController@show']);
+        $router->get('/{id:[\d]+}/ci-automation-phases', ['uses' => 'ComponentCiAutomationController@index']);
 
     });
 });

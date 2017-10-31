@@ -8,10 +8,10 @@ use App\Http\Controllers\ApiController;
 use App\Models\Component\Component;
 
 
-    class ComponentCiAutomationController extends ApiController
+class ComponentCiAutomationController extends ApiController
 {
 
-    public function show($componentId)
+    public function index($componentId)
     {
         return $this->respondData(
             (new CiAutomationTransformer())->transformCollection(
