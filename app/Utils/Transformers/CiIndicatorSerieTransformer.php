@@ -9,7 +9,7 @@ class CiIndicatorSerieTransformer extends Transformer
 
     public function transform($indicator)
     {
-        $indicatorTransform = new CiIndicatorTransformer();
+        $indicatorTransform = new SimpleCiIndicatorTransformer();
 
         return $indicatorTransform->transformCollection($indicator->toArray());
     }
