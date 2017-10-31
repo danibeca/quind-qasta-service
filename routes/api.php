@@ -40,6 +40,9 @@ $router->group([
         $router->get('/{id:[\d]+}/ci-indicators/{id2:[\d]+}', ['uses' => 'ComponentCiIndicatorController@show']);
         $router->get('/{id:[\d]+}/ci-automation-phases', ['uses' => 'ComponentCiAutomationController@index']);
 
+        $router->post('/{id:[\d]+}/ci-indicator-values', ['uses' => 'ComponentCiIndicatorValueController@store']);
+        $router->post('/{id:[\d]+}/ci-automation-values', ['uses' => 'ComponentCiAutomationValueController@store']);
+
     });
 });
 
