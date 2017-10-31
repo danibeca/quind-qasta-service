@@ -11,7 +11,8 @@ class   CiIndicatorTransformer extends Transformer
     {
         return [
             'date'  => Carbon::parse($indicator['created_at'])->format('d-m-Y'),
-            'value' => round($indicator['value'], 2)
+            'value' => round($indicator['value'], 2),
+            'value' => $indicator['value']
         ];
     }
 }
