@@ -9,7 +9,7 @@ class ComponentCiAutomationSerie extends Model
 
     public function processPhase()
     {
-        return $this->hasOne('App\Models\ContinuousIntegration\ProcessPhase');
+        return $this->belongsTo('App\Models\ContinuousIntegration\ProcessPhase');
 
     }
 }
