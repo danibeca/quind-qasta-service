@@ -25,7 +25,9 @@ class ComponentCiIndicatorController extends ApiController
             foreach ($indicatorIdArray as $indicatorId)
             {
 
-                $result = $result->union([$indicatorId => Component::find($componentId)->getCiIndicator($indicatorId)]);
+                $result = $result->union([$indicatorId => Component::find($componentId)->getCiIndicator($indicatorId),
+                                          'name'       => CiIndicator::find($indicatorId)
+                ]);
 
 
             }

@@ -28,6 +28,9 @@ $router->group([
         $router->get('/{id:[\d]+}/indicators', ['uses' => 'ComponentIndicatorController@index']);
         $router->get('/{id:[\d]+}/indicators/{id2:[\d]+}', ['uses' => 'ComponentIndicatorController@show']);
 
+        $router->get('/{id:[\d]+}/ci-indicators', ['uses' => 'ComponentCiIndicatorController@index']);
+        $router->get('/{id:[\d]+}/ci-indicators/{id2:[\d]+}', ['uses' => 'ComponentCiIndicatorController@show']);
+
         $router->get('/{id:[\d]+}/attributeissues', ['uses' => 'ComponentAttributeIssueController@index']);
         $router->get('/{id:[\d]+}/attributeissues2', ['uses' => 'ComponentAttributeIssueController@index2']);
 

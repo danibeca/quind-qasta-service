@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateComponentCiIndicatorsTable extends Migration
+class CreateCiIndicatorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateComponentCiIndicatorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('component_ci_indicators', function (Blueprint $table) {
+        Schema::create('ci_indicators', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 30);
             $table->timestamps();
         });
 
-        DB::table('component_indicators')->insert(
+        DB::table('ci_indicators')->insert(
             array(
                 array(
                     'id' => 1,
@@ -35,6 +35,6 @@ class CreateComponentCiIndicatorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('component_ci_indicators');
+        Schema::dropIfExists('ci_indicators');
     }
 }
