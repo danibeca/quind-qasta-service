@@ -21,9 +21,15 @@ class Component extends Model
 
     }
 
+    public function ciAutomationSerie()
+    {
+        return $this->hasMany('App\Models\Component\ComponentCiAutomationSerie');
+
+    }
+
     public function indicatorSerie($indicatorId)
     {
-        return $this->hasMany('App\Models\Component\ComponentIndicatorSerie')
+        return $this->hasMany('App\Models\Component\ComponentCiAutomationSerie')
             ->where('indicator_id', $indicatorId);
     }
 
@@ -31,6 +37,14 @@ class Component extends Model
     {
         return $this->hasMany('App\Models\Component\ComponentCiIndicatorSerie')
             ->where('ci_indicator_id', $indicatorId);
+    }
+
+    public function getCiAutomation()
+    {
+        return $this->ciAutomationSerie()
+            ->whereCreatedAt(
+                $this->ciAutomationSerie()->max('created_at')
+            )->get();
     }
 
     public function getIndicator($indicatorId)
