@@ -26,13 +26,13 @@ class ComponentCiIndicatorController extends ApiController
             foreach ($indicatorIdArray as $indicatorId)
             {
 
-                $result = $result->union([$indicatorId => Component::find($componentId)->getCiIndicator($indicatorId)
+                $result = $result->union([Component::find($componentId)->getCiIndicator($indicatorId)
                 ]);
 
 
             }
 
-           return $this->respondData((new CiIndicatorTransformer())->transformCollection($result->toArray(), true));
+           return $this->respondData((new CiIndicatorTransformer())->transformCollection($result->toArray()));
 //
         }
 
