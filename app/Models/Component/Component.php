@@ -42,7 +42,7 @@ class Component extends Model
     public function getCiAutomation()
     {
         return $this->ciAutomationSerie()
-            ->whereCreatedAt(
+            ->with('processPhase')->whereCreatedAt(
                 $this->ciAutomationSerie()->max('created_at')
             )->get();
     }
