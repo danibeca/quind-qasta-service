@@ -43,6 +43,8 @@ $router->group([
         $router->post('/{id:[\d]+}/ci-indicator-values', ['uses' => 'ComponentCiIndicatorValueController@store']);
         $router->post('/{id:[\d]+}/ci-automation-values', ['uses' => 'ComponentCiAutomationValueController@store']);
 
+        $router->post('/{id:[\d]+}/process-phases', ['uses' => 'ProcessPhaseController@store']);
+
     });
 });
 
