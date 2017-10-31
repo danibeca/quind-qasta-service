@@ -32,8 +32,8 @@ class ComponentCiIndicatorController extends ApiController
 
             }
 
-            return $this->respondData((new CiIndicatorTransformer())->transformCollection($result->toArray(), true));
-
+//            return $this->respondData((new CiIndicatorTransformer())->transformCollection($result->toArray(), true));
+            return $this->respondData($result);
         }
 
 
