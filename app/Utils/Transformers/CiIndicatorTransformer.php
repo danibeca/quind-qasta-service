@@ -4,7 +4,7 @@ namespace App\Utils\Transformers;
 
 use Carbon\Carbon;
 
-class CiIndicatorTransformer extends Transformer
+class   CiIndicatorTransformer extends Transformer
 {
 
     public function transform($indicator)

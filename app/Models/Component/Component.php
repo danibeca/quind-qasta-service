@@ -29,7 +29,7 @@ class Component extends Model
 
     public function indicatorSerie($indicatorId)
     {
-        return $this->hasMany('App\Models\Component\ComponentCiAutomationSerie')
+        return $this->hasMany('App\Models\Component\ComponentIndicatorSerie')
             ->where('indicator_id', $indicatorId);
     }
 
