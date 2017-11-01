@@ -30,7 +30,7 @@ class ProcessPhaseController extends ApiController
 
     public function update(Request $request, $componentId, $phaseId)
     {
-        $phase = ProcessPhase::where('componentId', $componentId)->where('id', $phaseId)->get()->first();
+        $phase = ProcessPhase::where('component_owner_id', $componentId)->where('id', $phaseId)->get()->first();
         if (isset($phase))
         {
             $phase->name = Input::get('name');
