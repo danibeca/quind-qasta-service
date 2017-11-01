@@ -14,7 +14,7 @@ class ProcessPhaseController extends ApiController
 
     public function index($componentId)
     {
-        return $this->respondStandard(ProcessPhase::where('component_owner_id', $componentId)->get()->toArray());
+        return $this->respondData(ProcessPhase::where('component_owner_id', $componentId)->get());
     }
 
     public function store(Request $request, $id)
@@ -30,7 +30,8 @@ class ProcessPhaseController extends ApiController
     public function update(Request $request, $phaseId, $componentId)
     {
         $phase = ProcessPhase::where('componentId', $componentId)->where('id', $phaseId)->get()->first();
-        if(isset($phase)){
+        if (isset($phase))
+        {
             $phase->name = $request->name;
             $phase->save();
         }
