@@ -28,7 +28,7 @@ class ProcessPhaseController extends ApiController
         return $this->respondResourceCreated($phase);
     }
 
-    public function update($phaseId, $componentId)
+    public function update(Request $request, $componentId, $phaseId)
     {
         $phase = ProcessPhase::where('componentId', $componentId)->where('id', $phaseId)->get()->first();
         if (isset($phase))
@@ -41,7 +41,7 @@ class ProcessPhaseController extends ApiController
         return $this->respond('OK');
     }
 
-    public function destroy($phaseId, $componentId)
+    public function destroy(Request $request, $componentId, $phaseId)
     {
         ProcessPhase::where('componentId', $componentId)->where('id', $phaseId)->get()->delete();
 
