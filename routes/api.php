@@ -46,7 +46,7 @@ $router->group([
         $router->post('/{id:[\d]+}/process-phases', ['uses' => 'ProcessPhaseController@store']);
         $router->get('/{id:[\d]+}/process-phases', ['uses' => 'ProcessPhaseController@index']);
         $router->put('/{id:[\d]+}/process-phases/{pp:[\d]+}', ['uses' => 'ProcessPhaseController@update']);
-        $router->delete('/{id:[\d]+}/process-phases/{id:[\d]+}', ['uses' => 'ProcessPhaseController@destroy']);
+        $router->delete('/{id:[\d]+}/process-phases/{pp:[\d]+}', ['uses' => 'ProcessPhaseController@destroy']);
 
     });
 });
