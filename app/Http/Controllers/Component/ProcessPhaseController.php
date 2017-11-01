@@ -7,6 +7,7 @@ use App\Http\Controllers\ApiController;
 
 use App\Models\ContinuousIntegration\ProcessPhase;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 
 class ProcessPhaseController extends ApiController
@@ -27,12 +28,12 @@ class ProcessPhaseController extends ApiController
         return $this->respondResourceCreated($phase);
     }
 
-    public function update(Request $request, $phaseId, $componentId)
+    public function update($phaseId, $componentId)
     {
         $phase = ProcessPhase::where('componentId', $componentId)->where('id', $phaseId)->get()->first();
         if (isset($phase))
         {
-            $phase->name = $request->name;
+            $phase->name = Input::get('name');
             $phase->save();
         }
 
@@ -40,7 +41,7 @@ class ProcessPhaseController extends ApiController
         return $this->respond('OK');
     }
 
-    public function destroy(Request $request, $phaseId, $componentId)
+    public function destroy($phaseId, $componentId)
     {
         ProcessPhase::where('componentId', $componentId)->where('id', $phaseId)->get()->delete();
 
