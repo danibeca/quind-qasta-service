@@ -14,11 +14,16 @@ class ComponentQualityAttributeValueController extends ApiController
 {
     public function store($componentId)
     {
-        Log::info(json_encode(Input::all()));
-        //ComponentAttributeIssueSerie::where('attribute_id', (Input::get('attribute_id')))->where('component_id', $componentId)->where('created_at','>',Carbon::now()->format('Y-m-d'))->delete();
-        $value = new ComponentAttributeIssueSerie(Input::all());
-        $value->component_id = $componentId;
-        $value->save();
+        ComponentAttributeIssueSerie::where('component_id', $componentId)->where('created_at','>',Carbon::now()->format('Y-m-d'))->delete();
+        $indicators = Input::all();
+        foreach ($indicators as $indicator)
+        {
+
+            $value = new ComponentAttributeIssueSerie($indicator);
+            $value->component_id = $componentId;
+            $value->save();
+        }
+
 
         return $this->respondResourceCreated();
 
