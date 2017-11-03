@@ -21,6 +21,7 @@ class CreateComponentCiAutomationSeriesTable extends Migration
             $table->timestamps();
 
             $table->foreign('component_id', 'fk_automation_component')->references('id')->on('components')->onDelete('cascade');
+            $table->foreign('process_phase_id', 'fk_automation_phase')->references('id')->on('process_phases')->onDelete('cascade');
 
         });
     }
